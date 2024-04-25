@@ -1,0 +1,26 @@
+$font-sizes: (
+  1: $h6-font-size * 6.25,
+  2: $h1-font-size,
+  3: $h2-font-size,
+  4: $h3-font-size,
+  5: $h4-font-size,
+  6: $h5-font-size,
+  7: $h6-font-size,
+  8: $h6-font-size * 0.875,
+  9: $h6-font-size * 0.8125,
+  10: $h6-font-size * 0.7,
+  55: $h6-font-size * 3.4375,
+  100: $h6-font-size * 6.25,
+);
+$utilities: map-merge(
+  $utilities,
+  (
+  "font-size": (
+    rfs: true,
+    property: font-size,
+    class: fs,
+    values: $font-sizes
+  ),
+  )
+);
+

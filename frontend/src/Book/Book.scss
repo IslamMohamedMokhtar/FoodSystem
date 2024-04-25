@@ -1,0 +1,25 @@
+.date-picker-container {
+  position: relative;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: calc(100% - 30px); /* Adjust as needed to accommodate the icon */
+}
+
+.react-datepicker__input-container .react-datepicker__close-icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.book-background-container {
+    background-image: url('../assets//image//map-pic.png'); /* Replace 'background-image.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    margin-top: -12%;
+    height: 767px;
+}

@@ -1,0 +1,18 @@
+.profilePic{
+    height: 150px;
+    width: 150px;
+}
+.profile-picture-label{
+    transform: translate(90px, -30px);
+    background-color: rgba(255, 228, 196, 0.4); 
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        filter: drop-shadow(0px 0px 2px gray);
+    }
+}

@@ -1,0 +1,28 @@
+// Define custom border radius value
+$border-radius-xlg: 0.5rem;
+
+// Import Bootstrap utilities
+// Merge the new border radius value into the border utilities map
+$utilities: map-merge(
+  $utilities,
+  (
+    "rounded": (
+      property: border-radius,
+      class: rounded,
+      values: (
+        null: $border-radius,
+        0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
+        4: $border-radius-xlg,
+        5: $border-radius-xlg * 2,
+        circle: 50%,
+        pill: $border-radius-pill
+      )
+    )
+  )
+);
+
+$custom-control-indicator-checked-color: red !default;
+$custom-control-indicator-checked-bg: $component-active-bg !default;

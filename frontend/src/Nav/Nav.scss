@@ -1,0 +1,155 @@
+.bg-dark {
+  background-color: #212529 !important;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+nav {
+  display: block;
+  unicode-bidi: isolate;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  overflow-y: hidden;
+}
+
+.bg-body {
+  background-color: #fff !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.logo-aspect-ratio {
+  height: 55px;
+  width: 55px;
+}
+
+.logo-font {
+  font-family: 'Playfair Display';
+  filter: drop-shadow(0px 3px 1px #474747);
+}
+
+.nav-link {
+  filter: drop-shadow(0px 4px 2px #474747);
+
+  &.active {
+    background-color: #DBDFD0;
+    border-radius: 34px;
+  }
+
+  &.text-primary {
+    transition: opacity 0.3s ease, filter 0.3s ease; // Add transition for opacity and filter
+
+    &:hover {
+      opacity: 0.2;
+      filter: drop-shadow(0px 4px 2px #ffffff);
+    }
+  }
+}
+
+.log-btn {
+  width: 211px;
+}
+
+.secondary-nav {
+  height: 45px;
+}
+
+.social-nav {
+  display: flex;
+}
+
+.social-nav li {
+  list-style: none;
+}
+
+.social-nav li a {
+  width: 27px;
+  height: 27px;
+  background-color: #615f5f;
+  text-align: center;
+  font-size: 15px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #615f5f;
+  z-index: 1;
+}
+
+.social-nav li a .icon {
+  position: relative;
+  color: #ffffff;
+  transition: .5s;
+  z-index: 3;
+}
+
+.social-nav li a:hover .icon {
+  color: #958a8a;
+  transform: rotateY(360deg);
+}
+
+.social-nav li a:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f00;
+  transition: .5s;
+  z-index: 2;
+}
+
+.social-nav li a:hover:before {
+  top: 0;
+}
+
+
+
+.social-nav li:nth-child(1) a:before {
+  background: #55acee;
+}
+
+.social-nav li:nth-child(2) a:before {
+  background: #3b5999;
+}
+
+.social-nav li:nth-child(3) a:before {
+  background: linear-gradient(45deg, #ea260c, #ea770c, #e2cd13);
+}
+
+.social-nav li:nth-child(4) a:before {
+  background: #c5c0c0;
+}
+.social-nav li:nth-child(5) a:before {
+  background: linear-gradient(45deg, #ea260c, #b2370e, #b2370e);
+}
+.social-nav li:nth-child(6) a:before {
+  background: #8cd46b;
+}
+.mh-100{
+  min-height: 100px;
+}

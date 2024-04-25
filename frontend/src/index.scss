@@ -1,0 +1,83 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Define custom variables
+@import './assets/styles/color';
+@import './assets/styles/border';
+@import './assets/styles/font';
+@import './assets/styles/input';
+@import './assets/styles/padding';
+
+@import "bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-Regular.ttf') format('truetype');
+  font-weight: normal; /* Regular weight */
+  font-style: normal; /* Normal style */
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-Italic.ttf') format('truetype');
+  font-weight: normal; /* Regular weight */
+  font-style: italic; /* Italic style */
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: normal; /* Normal style */
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500; /* Medium weight */
+  font-style: italic; /* Italic style */
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-Bold.ttf') format('truetype');
+  font-weight: bold; /* Bold weight */
+  font-style: normal; /* Normal style */
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  src: url('./assets/fonts/static/DMSans-BoldItalic.ttf') format('truetype');
+  font-weight: bold; /* Bold weight */
+  font-style: italic; /* Italic style */
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.font-Playfair {
+  font-family: 'Playfair Display';
+}
+.btn-white{
+  &:focus{
+    background-color: rgb(178, 179, 180);
+    outline-color: rgb(178, 179, 180);
+    border-color: rgb(178, 179, 180);
+  }
+  &:hover{
+    background-color: rgb(178, 179, 180);
+    outline-color: rgb(178, 179, 180);
+    border-color: rgb(178, 179, 180) !important;
+  }
+}

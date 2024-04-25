@@ -1,0 +1,83 @@
+// Import Bootstrap's Sass files
+// Merge custom colors with Bootstrap theme colors
+$primary:#F9F9F7;
+$secondary: #AD343E;
+$blue: #36A3F7;
+$dark: #182226;
+$black: #2C2F24;
+$gray: #474747;
+$lightskin: #ADB29E;
+$darkgray: #3F4047;
+$lightbrown: #414536;
+$lightgray: #DBDFD0;
+$white: #FFFFFF;
+$purpleblue: black;
+$babyblue:#5F48D1;
+
+$custom-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "blue": $blue,
+    "dark": $dark,
+    "lightskin":$lightskin,
+    "darkgray": $darkgray,
+    "lightgray": $lightgray,
+    "purpleblue": $purpleblue,
+    "babyblue": $babyblue,
+    "gray": $gray,
+    "black": $black,
+    "lightbrown": $lightbrown,
+    "white": $white,
+    // Add more custom colors as needed
+);
+
+
+// Merge custom colors with Bootstrap theme colors
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color": (
+      property: color,
+      class: text,
+      values: map-merge(
+        $theme-colors,
+        (
+          "white": $white,
+          "body": $body-color,
+          "muted": $text-muted,
+          "black-50": rgba($black, .5),
+          "white-50": rgba($white, .5),
+          "reset": inherit,
+        )
+      )
+    ),
+    "background-color": (
+      property: background-color,
+      class: bg,
+      values: map-merge(
+        $theme-colors,
+        (
+          "body": $body-bg,
+          "white": $white,
+          "transparent": transparent
+        )
+      )
+    ),
+    "border-color": (
+      property: border-color,
+      class: border,
+      values: map-merge($theme-colors, ("white": $white))
+    ),
+    "navbar-color": (
+      property: background-color,
+      class: bg,
+      values: (
+        "light": #000000, // Light background color for navbar
+        "dark": #ffffff // Dark background color for navbar
+      )
+  )
+  )
+);
+

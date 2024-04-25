@@ -1,0 +1,21 @@
+.btn-outline-lightgray-custom{
+    width: 150px;
+    height: 48px;
+    border-color: #DBDFD0;
+    &:focus{
+        box-shadow: none;
+    }
+    &.active{
+        background-color: #AD343E;
+        color: white;
+    }
+}
+.card-image{
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.delivery-btn{
+    &:hover{
+        transform: scale(1.2);
+    }
+}
