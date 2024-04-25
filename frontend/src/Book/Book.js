@@ -104,14 +104,14 @@ export default function Book() {
     );
     return (
         <>
-            <div class="bg-primary">
-                <div class="d-flex justify-content-center">
-                    <div class="col-lg-5 text-center px-lg-5 mb-80 mt-80">
+            <div className="bg-primary">
+                <div className="d-flex justify-content-center">
+                    <div className="col-lg-5 text-center px-lg-5 mb-80 mt-80">
                         <h1 className='fs-100 font-Playfair'>Book A Table</h1>
                         <p className='fs-7 px-lg-10'>We consider all the drivers of change gives you the components you need to change to create a truly happens.</p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                     <form className="col-xl-5 col-lg-6 col-11 bg-white shadow row g-3 p-9 rounded-5" onSubmit={handleSubmit}>
                         <div className="col-md-6 d-flex flex-column">
                             <label htmlFor="col-12 inputDate" className="form-label">Date</label>

@@ -5,13 +5,13 @@ import { NavLink } from 'react-router-dom';
 function Nav2() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-primary mh-100" aria-label="Main navigation">
-                    <div className="container">
+            <div className="container">
                 <div className="d-flex flex-wrap w-100 pe-64">
-                <button className="navbar-toggler me-10" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
+                    <button className="navbar-toggler me-10" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
                     <div className="col-6">
-                        <NavLink exact to="/" className="navbar-brand d-flex align-items-center log-btn" href="#">
+                        <NavLink exact={true} to="/" className="navbar-brand d-flex align-items-center log-btn" href="#">
                             <img src={logo} alt='logo' className='logo-aspect-ratio' />
                             <h2 className='fst-italic fw-bolder text-gray logo-font ms-2 mb-0'>Bistro Bliss</h2>
                         </NavLink>
@@ -20,7 +20,7 @@ function Nav2() {
                     <div className="col-6 collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink exact to="/" className="nav-link px-4 py-1" activeClassName="active">Home</NavLink>
+                                <NavLink exact={true} to="/" className="nav-link px-4 py-1" activeClassName="active">Home</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to="/about" className="nav-link px-4 py-1" activeClassName="active">About</NavLink>

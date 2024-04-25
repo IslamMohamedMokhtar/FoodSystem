@@ -7,8 +7,8 @@ export default function AboutCard({cardIcon, title, body}) {
   <div class="col-3">
   {cardIcon}
   </div>
-  <div class="col-9 text-start">
-    <h5 class="fw-bold">{title}</h5>
+  <div className="col-9 text-start">
+    <h5 className="fw-bold">{title}</h5>
     <p>{body}</p>
   </div>
 </div>

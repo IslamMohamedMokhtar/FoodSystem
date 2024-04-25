@@ -8,8 +8,8 @@ function SectionThird({ image }) {
                 <div className='d-flex align-items-center flex-wrap mt-120 gap-5 justify-content-center'>
                     <div className='col-lg-7 col-12 pb-120 col-12'>
                         <div className=''>
-                            <img src={image} className='section3-img img-fluid rounded-5' alt='food card background'/>
-                            <div className='card-body bg-gray rounded-4 p-9 p-md-5 position-absolute start-50 translate-middle' style={{ marginTop: "-7%", marginLeft: "-11%", minWidth: '20vw', maxHeight: '310px', maxWidth: '350px'}}>
+                            <img src={image} className='section3-img img-fluid rounded-5' alt='food card background' />
+                            <div className='card-body bg-gray rounded-4 p-9 p-md-5 position-absolute start-50 translate-middle' style={{ marginTop: "-7%", marginLeft: "-11%", minWidth: '20vw', maxHeight: '310px', maxWidth: '350px' }}>
                                 <h5 className='card-title text-white fw-bold fs-6'>Come and visit us</h5>
                                 <ul className='list-unstyled'>
                                     <li className="mt-8">

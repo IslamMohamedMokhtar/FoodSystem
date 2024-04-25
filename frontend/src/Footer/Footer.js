@@ -24,7 +24,7 @@ function Footer() {
                 <div className='container px-md-5 px-lg-0 d-flex'>
                     <div className='d-flex flex-wrap justify-content-between pt-120 gap-5'>
                         <div className='col-lg-3 d-flex flex-column pe-9'>
-                            <NavLink exact to="/" className="navbar-brand d-flex align-items-center justify-content-center log-btn text-light logo2-btn" href="#">
+                            <NavLink  exact={true} to="/" className="navbar-brand d-flex align-items-center justify-content-center log-btn text-light logo2-btn" href="#">
                                 <img src={logo} alt='logo' className='logo-aspect-ratio me-5' />
                                 <h2 className='fst-italic fw-bolder logo-font mb-0'>Bistro Bliss</h2>
                             </NavLink>
@@ -34,22 +34,22 @@ function Footer() {
                             <ul className="list-unstyled gap-2 d-flex align-items-end social-nav2 mt-7">
                                 <li>
                                     <a href="https://twitter.com/?lang=en" className='twitter'>
-                                        <i class="fab fa-twitter icon"></i>
+                                        <i className="fab fa-twitter icon"></i>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://web.facebook.com/?_rdc=1&_rdr" className='facebook'>
-                                        <i class="fab fa-facebook-f icon"></i>
+                                        <i className="fab fa-facebook-f icon"></i>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://www.instagram.com/" className='instagram'>
-                                        <i class="fab fa-instagram icon"></i>
+                                        <i className="fab fa-instagram icon"></i>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="https://github.com/" className='github'>
-                                        <i class="fab fa-github icon"></i>
+                                        <i className="fab fa-github icon"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -60,37 +60,37 @@ function Footer() {
                                     Pages
                                 </li>
                                 <li className=' mt-9'>
-                                    <Link to='/' type='button' className='btn item-lightgray'>
+                                    <Link to='/' type='button' className='btn item-lightgray' exact={true}>
                                         Home
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/about' type='button' className='btn item-lightgray'>
+                                    <Link to='/about' type='button' className='btn item-lightgray' exact={true}>
                                         About
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/menu' type='button' className='btn item-lightgray'>
+                                    <Link to='/menu' type='button' className='btn item-lightgray' exact={true}>
                                         Menu
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/pricing' type='button' className='btn item-lightgray'>
+                                    <Link to='/pricing' type='button' className='btn item-lightgray' exact={true}>
                                         Pricing
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/blog' type='button' className='btn item-lightgray'>
+                                    <Link to='/blog' type='button' className='btn item-lightgray' exact={true}>
                                         Blog
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/contactus' type='button' className='btn item-lightgray'>
+                                    <Link to='/contactus' type='button' className='btn item-lightgray' exact={true}>
                                         Contact
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/delivery' type='button' className='btn item-lightgray'>
+                                    <Link to='/delivery' type='button' className='btn item-lightgray' exact={true}>
                                         Delivery
                                     </Link>
                                 </li>
@@ -103,37 +103,37 @@ function Footer() {
                                     Utility Pages
                                 </li>
                                 <li className=' mt-9'>
-                                    <Link to='/' type='button' className='btn item-lightgray'>
+                                    <Link to='/' type='button' className='btn item-lightgray' exact={true}>
                                         Start Here
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/help' type='button' className='btn item-lightgray'>
+                                    <Link to='/help' type='button' className='btn item-lightgray' exact={true}>
                                         Styleguide
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/password-protection' type='button' className='btn item-lightgray text-start'>
+                                    <Link to='/password-protection' type='button' className='btn item-lightgray text-start' exact={true}>
                                         Password Protected
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='*' type='button' className='btn item-lightgray text-start'>
+                                    <Link to='*' type='button' className='btn item-lightgray text-start' exact={true}>
                                         404 Not Found
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/licenses' type='button' className='btn item-lightgray'>
+                                    <Link to='/licenses' type='button' className='btn item-lightgray' exact={true}>
                                         Licenses
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/changelog' type='button' className='btn item-lightgray'>
+                                    <Link to='/changelog' type='button' className='btn item-lightgray' exact={true}>
                                         Changelog
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to='/view-more' type='button' className='btn item-lightgray'>
+                                    <Link to='/view-more' type='button' className='btn item-lightgray' exact={true}>
                                         View More
                                     </Link>
                                 </li>
@@ -151,7 +151,7 @@ function Footer() {
                                         </a>
                                     </li>
                                     <li>
-                                        <Link type='button' className='btn item-lightgray' to='profile'>
+                                        <Link type='button' className='btn item-lightgray' to='profile' exact={true}>
                                             profile
                                         </Link>
                                     </li>

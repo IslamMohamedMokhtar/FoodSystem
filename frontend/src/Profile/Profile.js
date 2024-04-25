@@ -95,13 +95,13 @@ export default function Profile() {
     };
     return (
         <>
-            <div class="bg-primary">
-                <div class="d-flex justify-content-center">
-                    <div class="col-lg-5 text-center px-lg-5 mb-80 mt-80">
+            <div className="bg-primary">
+                <div className="d-flex justify-content-center">
+                    <div className="col-lg-5 text-center px-lg-5 mb-80 mt-80">
                         <h1 className='fs-100 font-Playfair'>Edit Profile</h1>
                     </div>
                 </div>
-                <div class="d-flex flex-wrap justify-content-center">
+                <div className="d-flex flex-wrap justify-content-center">
                     <form className="col-xl-5 col-lg-6 col-11 bg-white shadow row g-3 p-9 rounded-5  mb-80" onSubmit={handleSubmit}>
                         <div className="col-md-12">
                             <div className=' d-flex justify-content-center'>

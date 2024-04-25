@@ -3,11 +3,11 @@ import HomeCard from './HomeCard';
 function SectionSecond() {
     return (
         <>
-            <div class="d-flex flex-column justify-content-center align-items-center bg-white m-0">
-                <h2 class="font-Playfair fs-55 mt-90 mb-64">Browse Our Menu</h2>
-                <div class="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-120">
+            <div className="d-flex flex-column justify-content-center align-items-center bg-white m-0">
+                <h2 className="font-Playfair fs-55 mt-90 mb-64">Browse Our Menu</h2>
+                <div className="d-flex flex-wrap justify-content-center align-items-center gap-3 mb-120">
                     <div className='col-xl-2 col-lg-6 col-12 HomeCard'>
-                        <HomeCard icon={<div className='card-icon-background'><i class="fa fa-mug-hot fa-3x"></i></div>} title={"Breakfast"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'breakfast'} btnText={"Explore Menu"} />
+                        <HomeCard icon={<div className='card-icon-background'><i className="fa fa-mug-hot fa-3x"></i></div>} title={"Breakfast"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'breakfast'} btnText={"Explore Menu"} />
                     </div>
                     <div className='col-xl-2 col-lg-6 col-12 HomeCard'>
                         <HomeCard icon={<div className='card-icon-background'>
@@ -17,10 +17,10 @@ function SectionSecond() {
                         </div>} title={"Main Dishes"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'main-dishes'} btnText={"Explore Menu"} />
                     </div>
                     <div className='col-xl-2 col-lg-6 col-12 HomeCard'>
-                        <HomeCard icon={<div className='card-icon-background'><i class="fas fa-glass-whiskey fa-3x"></i></div>} title={"Drinks"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'drinks'} btnText={"Explore Menu"} />
+                        <HomeCard icon={<div className='card-icon-background'><i className="fas fa-glass-whiskey fa-3x"></i></div>} title={"Drinks"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'drinks'} btnText={"Explore Menu"} />
                     </div>
                     <div className='col-xl-2 col-lg-6 col-12 HomeCard'>
-                        <HomeCard  icon={<div className='card-icon-background'><i class="fas fa-birthday-cake fa-3x"></i></div>} title={"Desserts"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'desserts'} btnText={"Explore Menu"} />
+                        <HomeCard  icon={<div className='card-icon-background'><i className="fas fa-birthday-cake fa-3x"></i></div>} title={"Desserts"} body={"In the new era of technology we look in the future with certainty and pride for our life."} toUrl={'desserts'} btnText={"Explore Menu"} />
                     </div>
                 </div>
             </div>

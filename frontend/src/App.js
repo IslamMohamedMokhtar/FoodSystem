@@ -48,7 +48,6 @@ function App() {
 
 const Routings = () => {
     const {isLoggedIn} = useSelector((state) => state.auth);
-  console.log("isLoggedIn:" +isLoggedIn);
   return (
     <Routes>
       <Route path="/" element={<Home />} />
