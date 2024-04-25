@@ -5,10 +5,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendar } from 'react-icons/fa';
 import Select from 'react-select';
 import useAddBooking from '../Service/useAddBooking';
+import Loading from '../Common/Loading';
 
 
 export default function Book() {
-    const addBooking = useAddBooking();
+    const {addBooking, loading} = useAddBooking();
     const yearOptions = [
         { value: '18:30', label: '06:30 PM' },
         { value: '06:30', label: '06:30 AM' }
@@ -192,7 +193,8 @@ export default function Book() {
                                 options={totalPersonOptions} required/>
                         </div>
                         <div className="col-12">
-                            <button type="submit" className="btn btn-secondary w-100 rounded-pill py-3">Book A Table</button>
+                            {!loading&&<button type="submit" className="btn btn-secondary w-100 rounded-pill py-3">Book A Table</button>}
+                            {loading&&<Loading/>}
                         </div>
                     </form>
                 </div>

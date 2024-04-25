@@ -139,14 +139,14 @@ function Footer() {
                                 </li>
                                 {!isLoggedIn && <>
                                     <li>
-                                        <a type='button' className='btn item-lightgray' onClick={handleShow}>
+                                        <a type='button' href='#' className='btn item-lightgray' onClick={handleShow}>
                                             Login
                                         </a>
                                     </li>
                                 </>}
                                 {isLoggedIn && <>
                                     <li>
-                                        <a type='button' className='btn item-lightgray' onClick={() => dispatch(signout())}>
+                                        <a type='button' href='#' className='btn item-lightgray' onClick={() => dispatch(signout())}>
                                             sign out
                                         </a>
                                     </li>

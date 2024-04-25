@@ -8,7 +8,7 @@ import MenuCard from "./MenuCard";
 export default function MenuSectionOne({ type }) {
     const [pageNumber, setPageNumber] = useState(1);
     useEffect(()=>setPageNumber(1),[type])
-    const { loading, error, menu, hasMore } = useMenuFetch(type, pageNumber);
+    const { loading, menu, hasMore } = useMenuFetch(type, pageNumber);
     const observer = useRef();
     const lastMenuCallRef = useCallback(node => {
         if (loading) return;
@@ -19,7 +19,7 @@ export default function MenuSectionOne({ type }) {
             console.log("hena:", hasMore);
             if (entries[0].isIntersecting && hasMore) {
                 setPageNumber(prevPageNumber => prevPageNumber + 1);
-                console.log("prevPageNumber",pageNumber);
+                console.log("prevPageNumber", pageNumber);
             }
         });
         if (node) observer.current.observe(node);

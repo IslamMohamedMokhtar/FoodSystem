@@ -1,6 +1,4 @@
-import { lazy, Suspense } from 'react';
 import './Menu.scss';
-import Loading from '../Common/Loading';
 import uberEats from '../assets/image/uber_eats.png';
 import grubHub from '../assets/image/crub-hub.png';
 import postMates from '../assets/image/post-mates.png';

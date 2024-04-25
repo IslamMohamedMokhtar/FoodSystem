@@ -1,15 +1,19 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { pictureUrl } from "../Common/constants";
 import { signout } from "../Redux/Auth/authActions";
 import { useDispatch } from "react-redux";
 import PictureModel from "../Models/PictureModel";
+import HTMLResponseUtil from "../Util/HttpResposeUtil";
+import parseError from "../Util/ErrorParserUtil";
+import { toast } from "react-toastify";
 
 export function useProfilePicPost() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [profilePictureUrl, setProfilePictureUrl] = useState(null);
     const dispatch = useDispatch();
+    // const successNotify = (message) => toast.success(message);
+    const failedNotify = (message) => toast.warning(message);
 
     const commit = async (profilePicture) => {
         if (profilePicture != null) {
@@ -33,6 +37,7 @@ export function useProfilePicPost() {
                 if (error.response && error.response.status === 401) {
                     dispatch(signout());
                 }
+                failedNotify(HTMLResponseUtil({ Task: 'UploadingPicture', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
             } finally {
                 setLoading(false);
             }
@@ -40,5 +45,5 @@ export function useProfilePicPost() {
         }
     };
 
-    return { loading, error, profilePictureUrl, commit };
+    return { loading, error, commit };
 }

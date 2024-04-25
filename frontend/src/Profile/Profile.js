@@ -11,7 +11,7 @@ import ProfileModel from '../Models/ProfileModel';
 
 export default function Profile() {
     const [imagePreview, setImagePreview] = useState(imag);
-    const { profile, commit: profileFetchComit } = useProfileFetch();
+    const {  commit: profileFetchComit } = useProfileFetch();
     const { loading: profilePostLoading, commit } = useProfilePost();
     const { loading: imageLoading, commit: commitProfilePic } = useProfilePicPost();
     const [imageSrc, setImageSrc] = useState(null);
@@ -26,11 +26,11 @@ export default function Profile() {
             ...prevData,
             'userName': profileModel.profile.userName
         }));
-        if (profileModel.profile.userProfilePicUrl != null)
+        if (profileModel.profile.userProfilePicUrl !== null)
             setImagePreview(`${baseUrl}/${profileModel.profile.userProfilePicUrl}`);
         }
         func();
-    }, []);
+    });
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -71,7 +71,7 @@ export default function Profile() {
 
     const handleSubmit = async (e, additionalArg) => {
         e.preventDefault();
-        if (imageSrc != null) {
+        if (imageSrc !== null) {
             const profilePictureUrl: PictureModel = await commitProfilePic(imageSrc);
             if (!profilePictureUrl.error) {
                 console.log('profilePictureUrl: ' + profilePictureUrl.picUrl);
@@ -81,7 +81,7 @@ export default function Profile() {
                 };
                 newFormData.userName = formData.userName;
                 newFormData.userProfilePicUrl = profilePictureUrl.picUrl;
-                if (profilePictureUrl.picUrl != '')
+                if (profilePictureUrl.picUrl !== '')
                     await commit(newFormData);
             }
         }

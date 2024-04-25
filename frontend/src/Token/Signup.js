@@ -57,7 +57,7 @@ function Signup({ setIsSignup, setOpenModal }) {
         setIsPasswordValid(passwordtest);
         setIsEmailValid(emailtest);
         setIsPasswordConfirmValid(passwordConfirm === password);
-        if (password !== "", email !== "" && password === passwordConfirm) {
+        if (password !== "" && email !== "" && password === passwordConfirm) {
             if (isEmailValid !== false && isPasswordValid !== false) {
                 dispatch(signup({ email, password,username, callback: () => { setOpenModal(); } }));
             }

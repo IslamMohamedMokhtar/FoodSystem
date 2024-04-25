@@ -4,20 +4,27 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getCurentUserUrl, logInUrl, signOutUrl, signUpUrl } from "../../Common/constants";
 import { toast } from 'react-toastify';
 import HTMLResponseUtil from '../../Util/HttpResposeUtil';
+import parseError from '../../Util/ErrorParserUtil';
 const success = (message) => toast.success(message);
-const error = (message) => toast.error(message);
+const failed = (message) => toast.error(message);
 
 export const login = createAsyncThunk("auth/login",
 
     async ({ email, password, callback }) => {
-        const loginData = { email, password };
-        const response = await axios.post(logInUrl, loginData, { withCredentials: true });
-        localStorage.setItem('user', JSON.stringify(response.data.result.user));
-        localStorage.setItem('isLoggedIn', true);
-        callback();
-        console.log(HTMLResponseUtil({Task: login, statusCode: response.status}));
-        success(login);
-        return response.data.result.user;
+        try {
+            const loginData = { email, password };
+            const response = await axios.post(logInUrl, loginData, { withCredentials: true });
+            localStorage.setItem('user', JSON.stringify(response.data.result.user));
+            localStorage.setItem('isLoggedIn', true);
+            callback();
+            success(HTMLResponseUtil({ Task: 'login', statusCode: response.status }));
+            return response.data.result.user;
+        }
+        catch (error) {
+            console.log(HTMLResponseUtil({ Task: 'login', statusCode: (error.response?.status || 500) }));
+            failed(HTMLResponseUtil({ Task: 'login', statusCode: error.response?.status || 500 }));
+            throw new Error(error);
+        }
     }
 );
 export const getCurrentUser = createAsyncThunk(
@@ -32,18 +39,25 @@ export const getCurrentUser = createAsyncThunk(
 export const signup = createAsyncThunk(
     'auth/signup',
     async ({ email, password, username, callback }) => {
-        const signUpData = { email, password, username };
-        const response = await axios.post(signUpUrl, signUpData, { withCredentials: true });
-        localStorage.setItem('user', JSON.stringify(response.data.result.user));
-        localStorage.setItem('isLoggedIn', true);
-        callback();
-        return response.data.result.user;
+        try {
+            const signUpData = { email, password, username };
+            const response = await axios.post(signUpUrl, signUpData, { withCredentials: true });
+            localStorage.setItem('user', JSON.stringify(response.data.result.user));
+            localStorage.setItem('isLoggedIn', true);
+            success(HTMLResponseUtil({ Task: 'signup', statusCode: response.status }));
+            callback();
+            return response.data.result.user;
+        } catch (error) {
+            failed(HTMLResponseUtil({ Task: 'signup', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
+            throw new Error(error);
+        }
+
     }
 );
 export const signout = createAsyncThunk(
     'auth/signout',
     async () => {
-        const response = await axios.get(signOutUrl, { withCredentials: true });
+        await axios.get(signOutUrl, { withCredentials: true });
         localStorage.removeItem('jwt');
         localStorage.removeItem('user');
         localStorage.removeItem('isLoggedIn');

@@ -1,13 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { profileUrl } from "../Common/constants";
 import { signout } from "../Redux/Auth/authActions";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import ProfileModel from "../Models/ProfileModel";
+import HTMLResponseUtil from "../Util/HttpResposeUtil";
+import parseError from "../Util/ErrorParserUtil";
 
-const successNotify = () => toast.success("success");
-const failedNotify = () => toast.warning("failed");
+const successNotify = (message) => toast.success(message);
+const failedNotify = (message) => toast.warning(message);
 export  function useProfileFetch() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -30,6 +32,7 @@ export  function useProfileFetch() {
             if (error.response && error.response.status === 401) {
                 dispatch(signout());
             }
+            failedNotify(HTMLResponseUtil({ Task: 'Profile', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
             profileModel.error = error;
         }finally{setLoading(false)}; // Update loading state to false
         return profileModel;
@@ -56,7 +59,7 @@ export function useProfilePost() {
         .then(res => {
             // Concatenate new menu items to the existing menu array
             setProfile(res.data.result.profile);
-            successNotify();
+            successNotify(HTMLResponseUtil({ Task: 'uploading Profile', statusCode: res.status }));
         })
         .catch(error => {
             if (axios.isCancel(error)) return;
@@ -64,6 +67,7 @@ export function useProfilePost() {
             if (error.response && error.response.status === 401) {
                 dispatch(signout());
             }
+            failedNotify(HTMLResponseUtil({ Task: 'uploading Profile', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
         })
         .finally(() => setLoading(false)); // Update loading state to false
 

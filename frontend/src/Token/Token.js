@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Modal } from "react-bootstrap";
 import Signup from './Signup';
 import Login from './Login';
 
 function Token({ handleShow, handleClose }) {
-    const [openModal, setOpenModal] = useState(handleShow);
+    const [, setOpenModal] = useState(handleShow);
     const [isSignup, setIsSignup] = useState(false);
     
     const closeModal = () => {

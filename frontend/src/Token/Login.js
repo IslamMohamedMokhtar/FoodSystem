@@ -42,7 +42,7 @@ function Login({ setIsSignup, setOpenModal }) {
         const emailtest = emailRegex.test(email);
         setIsPasswordValid(passwordtest);
         setIsEmailValid(emailtest);
-        if (password !== "", email !== "") {
+        if (password !== "" && email !== "") {
             if (isEmailValid !== false && isPasswordValid !== false) {
                 dispatch(login({ email, password, callback: () => { setOpenModal(false); } }));
             }

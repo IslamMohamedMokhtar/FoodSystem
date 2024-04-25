@@ -4,13 +4,14 @@ import { toast } from 'react-toastify';
 import { bookingsUrl } from '../Common/constants';
 import { useDispatch } from 'react-redux';
 import { signout } from '../Redux/Auth/authActions';
+import HTMLResponseUtil from '../Util/HttpResposeUtil';
+import parseError from '../Util/ErrorParserUtil';
 
 const useAddBooking = () => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
     const dispatch = useDispatch();
-    const successNotify = () => toast.success("success");
-    const failedNotify = () => toast.warning("failed");
+    const successNotify = (message) => toast.success(message);
+    const failedNotify = (message) => toast.warning(message);
     const addBooking = async (formData) => {
         console.log(formData,"formData");
         try {
@@ -20,23 +21,23 @@ const useAddBooking = () => {
                 withCredentials: true
             });
             // Handle success response
-            successNotify();
+            successNotify(HTMLResponseUtil({ Task: 'Booking', statusCode: response.status }));
+
             return response.data; // Return the response data
         } catch (error) {
             // Handle error
             if (axios.isCancel(error)) return;
-            setError(true);
             if (error.response && error.response.status === 401) {
                 dispatch(signout());
             }
-            failedNotify();
+            failedNotify(HTMLResponseUtil({ Task: 'Booking', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
         }
         finally{
             setLoading(false);
         }
     };
 
-    return addBooking;
+    return {addBooking, loading};
 };
 
 export default useAddBooking;

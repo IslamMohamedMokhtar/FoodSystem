@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { menuUrl } from "../Common/constants";
 import { signout } from "../Redux/Auth/authActions";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import HTMLResponseUtil from "../Util/HttpResposeUtil";
+import parseError from "../Util/ErrorParserUtil";
 
 export default function useMenuFetch(type, pageNumber) {
     const [loading, setLoading] = useState(false);
@@ -10,6 +13,8 @@ export default function useMenuFetch(type, pageNumber) {
     const [menu, setMenu] = useState([]);
     const [hasMore, setHasMore] = useState(false);
     const dispatch = useDispatch();
+    // const successNotify = (message) => toast.success(message);
+    const failedNotify = (message) => toast.warning(message);
     useEffect(() => {
         setMenu([]); // Reset menu when type changes
     }, [type]);
@@ -36,6 +41,7 @@ export default function useMenuFetch(type, pageNumber) {
             if (error.response && error.response.status === 401) {
                 dispatch(signout());
             }
+            failedNotify(HTMLResponseUtil({ Task: 'Menu', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
         })
         .finally(() => setLoading(false)); // Update loading state to false
 

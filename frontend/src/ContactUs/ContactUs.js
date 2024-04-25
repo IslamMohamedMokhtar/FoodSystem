@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import './ContactUs.scss';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { FaCalendar } from 'react-icons/fa';
-import Select from 'react-select';
 
 
 export default function ContactUs() {

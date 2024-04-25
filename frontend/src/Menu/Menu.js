@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense, useEffect } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import Loading from '../Common/Loading';
 import { menuTypeEnum } from '../Common/constants';
 const MenuSectionOne = lazy(() => import('./MenuSectionOne'));
