@@ -6,7 +6,7 @@ const {userRoleEnum} = require('../constants');
 
 const router = express.Router();
 
-router.get('/filter', verifyTokenWithCookie, checkRole(userRoleEnum.Admin), userController.userDetails);
+router.get('/filter', verifyTokenWithCookie, checkRole(userRoleEnum.Admin), userController.userIndexByFilter);
 router.get('/getCurentUser', verifyTokenWithCookie, userController.getCurentUser);
 router.get('/:id', verifyTokenWithCookie, checkRole(userRoleEnum.Admin), userController.userDetails);
 
