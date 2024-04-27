@@ -4,7 +4,6 @@ import Token from '../Token/Token';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signout } from '../Redux/Auth/authActions';
-
 function Nav1() {
     const [show, setShow] = useState(false);
 
@@ -12,7 +11,6 @@ function Nav1() {
     const handleShow = () => setShow(prevShow => !prevShow);
     const { isLoggedIn } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
-    console.log(isLoggedIn);
     return (
         <>
             <div className="nav-scroller bg-gray shadow-sm" id='secondary-nav'>

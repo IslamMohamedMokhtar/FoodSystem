@@ -13,6 +13,7 @@ import Loading from './Common/Loading';
 import ContactUs from './ContactUs/ContactUs';
 import Profile from './Profile/Profile';
 import { useDispatch, useSelector } from 'react-redux';
+import AuthModel from './Models/AuthModel';
 
 // Lazy load components
 const Nav1 = lazy(() => import('./Nav/Nav1'));
@@ -22,6 +23,7 @@ const Footer = lazy(() => import('./Footer/Footer'));
 const About = lazy(() => import('./About/About'));
 const Menu = lazy(() => import('./Menu/Menu'));
 const Book = lazy(() => import('./Book/Book'));
+const Dashboard = lazy(() => import('./Dashboard/Dashboard'));
 function App() {
   return (
     <Router>
@@ -47,7 +49,8 @@ function App() {
 }
 
 const Routings = () => {
-    const {isLoggedIn} = useSelector((state) => state.auth);
+    const {isLoggedIn, user} = useSelector((state) => state.auth);
+    const auth: AuthModel =  user;
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -62,6 +65,9 @@ const Routings = () => {
       </ProtectedRoute>} />
       <Route path="profile" element={<ProtectedRoute auth={isLoggedIn}>
         <Profile />
+      </ProtectedRoute>} />
+      <Route path="dashboard" element={<ProtectedRoute auth={isLoggedIn&& auth && auth.userRole === userRoleEnum.Admin}>
+        <Dashboard />
       </ProtectedRoute>} />
 
     </Routes>

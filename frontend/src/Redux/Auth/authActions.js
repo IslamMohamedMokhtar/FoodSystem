@@ -5,17 +5,15 @@ import { getCurentUserUrl, logInUrl, signOutUrl, signUpUrl } from "../../Common/
 import { toast } from 'react-toastify';
 import HTMLResponseUtil from '../../Util/HttpResposeUtil';
 import parseError from '../../Util/ErrorParserUtil';
+import { useDispatch } from 'react-redux';
 const success = (message) => toast.success(message);
 const failed = (message) => toast.error(message);
-
 export const login = createAsyncThunk("auth/login",
 
     async ({ email, password, callback }) => {
         try {
             const loginData = { email, password };
             const response = await axios.post(logInUrl, loginData, { withCredentials: true });
-            localStorage.setItem('user', JSON.stringify(response.data.result.user));
-            localStorage.setItem('isLoggedIn', true);
             callback();
             success(HTMLResponseUtil({ Task: 'login', statusCode: response.status }));
             return response.data.result.user;
@@ -30,10 +28,20 @@ export const login = createAsyncThunk("auth/login",
 export const getCurrentUser = createAsyncThunk(
     'auth/getCurrentUser',
     async () => {
+        try {
         const response = await axios.get(getCurentUserUrl, { withCredentials: true });
-        localStorage.setItem('user', JSON.stringify(response.data.result.user));
-        localStorage.setItem('isLoggedIn', true);
         return response.data.result.user;
+    }
+    catch (error) {
+        if (error.response && error.response.status === 401) {
+            console.log('error',error);
+            if (error.response && error.response.status === 401) {
+                // Dispatch the signout action if unauthorized
+                return { error: 'Unauthorized' };
+            }
+        }
+        throw new Error(error);
+    }
     }
 );
 export const signup = createAsyncThunk(
@@ -42,8 +50,6 @@ export const signup = createAsyncThunk(
         try {
             const signUpData = { email, password, username };
             const response = await axios.post(signUpUrl, signUpData, { withCredentials: true });
-            localStorage.setItem('user', JSON.stringify(response.data.result.user));
-            localStorage.setItem('isLoggedIn', true);
             success(HTMLResponseUtil({ Task: 'signup', statusCode: response.status }));
             callback();
             return response.data.result.user;
@@ -58,9 +64,6 @@ export const signout = createAsyncThunk(
     'auth/signout',
     async () => {
         await axios.get(signOutUrl, { withCredentials: true });
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('user');
-        localStorage.removeItem('isLoggedIn');
     }
 );
 

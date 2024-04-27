@@ -6,8 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import store from './Redux/store'
 import { Provider } from "react-redux";
 import { getCurrentUser } from './Redux/Auth/authActions';
-const isLoggedIn = localStorage.getItem('isLoggedIn');
-store.dispatch(getCurrentUser(isLoggedIn === 'true'));
+const persistedAuthState = localStorage.getItem('authState');
+const initialState = persistedAuthState
+  ? JSON.parse(persistedAuthState)
+  : {
+    user: null,
+    isLoggedIn: false,
+    loading: false,
+    error: null
+  };
+if (initialState.isLoggedIn)
+  store.dispatch(getCurrentUser());
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

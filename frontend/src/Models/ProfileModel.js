@@ -1,5 +1,5 @@
-class Profile {
-    constructor(userName = null, userProfilePicUrl = null) {
+export class Profile {
+    constructor({userName = null, userProfilePicUrl = null}) {
         this.userName = userName;
         this.userProfilePicUrl = userProfilePicUrl;
     }

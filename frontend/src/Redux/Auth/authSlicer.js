@@ -6,13 +6,16 @@ import {
     signout
 } from './authActions';
 
-const initialState = {
-  user: null,
-  isLoggedIn: false,
-  loading: false,
-  error: null
-};
-
+// Check local storage for persisted authentication state
+const persistedAuthState = localStorage.getItem('authState');
+const initialState = persistedAuthState
+  ? JSON.parse(persistedAuthState)
+  : {
+      user: null,
+      isLoggedIn: false,
+      loading: false,
+      error: null
+    };
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -27,10 +30,10 @@ const authSlice = createSlice({
         state.loading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
+        localStorage.setItem('authState', JSON.stringify(state));
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
-        state.isLoggedIn = false; // Corrected
         state.error = action.payload;
       })
       .addCase(getCurrentUser.pending, (state) => {
@@ -41,6 +44,14 @@ const authSlice = createSlice({
         state.loading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
+        if (action.payload.error === 'Unauthorized') {
+          state.loading = false;
+          state.isLoggedIn = false;
+          state.user = null;
+          localStorage.removeItem('authState');
+        }
+        else
+          localStorage.setItem('authState', JSON.stringify(state));
       })
       .addCase(getCurrentUser.rejected, (state, action) => {
         state.loading = false;
@@ -54,10 +65,10 @@ const authSlice = createSlice({
         state.loading = false;
         state.isLoggedIn = true;
         state.user = action.payload;
+        localStorage.setItem('authState', JSON.stringify(state));
       })
       .addCase(signup.rejected, (state, action) => {
         state.loading = false;
-        state.isLoggedIn = false; // Corrected
         state.error = action.payload;
       })
       .addCase(signout.pending, (state) => {
@@ -67,10 +78,15 @@ const authSlice = createSlice({
       .addCase(signout.fulfilled, (state, action) => {
         state.loading = false;
         state.isLoggedIn = false;
+        state.user= null;
+        localStorage.removeItem('authState');
       })
       .addCase(signout.rejected, (state, action) => {
         state.loading = false;
+        state.isLoggedIn = false;
+        state.user= null;
         state.error = action.payload;
+        localStorage.removeItem('authState');
       });
   },
 });

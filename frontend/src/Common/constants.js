@@ -7,6 +7,7 @@ export const getCurentUserUrl = `${baseUrl}/user/getCurentUser`;
 export const bookingsUrl = `${baseUrl}/bookings`;
 export const profileUrl = `${baseUrl}/profile`;
 export const pictureUrl = `${baseUrl}/picture`;
+export const userUrl = `${baseUrl}/user`;
 
 export const userRoleEnum = {
     Admin: "admin",

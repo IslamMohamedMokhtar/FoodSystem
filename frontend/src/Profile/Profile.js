@@ -22,6 +22,7 @@ export default function Profile() {
     useEffect(() => {
         const func = async()=>{
         const profileModel: ProfileModel = await profileFetchComit();
+        if(profileModel.error===null){
         setFormData(prevData => ({
             ...prevData,
             'userName': profileModel.profile.userName
@@ -29,8 +30,9 @@ export default function Profile() {
         if (profileModel.profile.userProfilePicUrl !== null)
             setImagePreview(`${baseUrl}/${profileModel.profile.userProfilePicUrl}`);
         }
+    }
         func();
-    });
+    },[]);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
