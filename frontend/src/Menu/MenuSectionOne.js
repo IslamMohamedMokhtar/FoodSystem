@@ -42,7 +42,7 @@ export default function MenuSectionOne({ type }) {
                         }
                     })}
                     {loading &&
-                        Array.from({ length: 3 }).map((_, index) => (
+                        Array.from({ length: 4 }).map((_, index) => (
                             <div className="col-xl-3 col-lg-4 mb-4  px-3">
                     <div className=" card rounded-5 is-loading ">
                         <LoadingCard>
