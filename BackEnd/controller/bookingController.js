@@ -1,6 +1,6 @@
 const { bookingErrors, bookingStatusEnum } = require('../constants');
 const { handleErrors } = require('../service/handleErrors');
-const { responseBuilder } = require('../service/responseBuilder');
+const { responseBuilder, responsePaginationBuilder } = require('../service/responseBuilder');
 const Booking = require('../model/booking');
 
 const bookingPost = async (req, res) => {
@@ -88,6 +88,26 @@ const bookingIndex = (req, res) => {
     });
 };
 
+const bookinIndexByFilter = async(req, res) => {
+  try{
+  const userID = req.query.userID;
+  const { pageNumber = 1, pageSize = 10 } = req.query;
+  let query = {};
+  if (userID) {
+      query = { createdBy: userID };
+  }
+  const countQuery = await Booking.countDocuments(query);
+  const response = await Booking.find(query)
+    .sort({ createdAt: -1 })
+    .skip((pageNumber - 1) * pageSize) // Skip documents based on the page number
+    .limit(pageSize)
+      return res.json(responsePaginationBuilder({ result: { Booking: response }, totalSize: countQuery}));
+  }
+    catch(error) {
+      console.log(error);
+      return res.status(500).send(responseBuilder({ error: handleErrors(error, bookingErrors) }));
+    };
+};
 
 
 module.exports = {
@@ -96,5 +116,6 @@ module.exports = {
   bookingIndex,
   bookingUpdate,
   bookingDelete,
-  bookingStatusUpdate
+  bookingStatusUpdate,
+  bookinIndexByFilter
 };

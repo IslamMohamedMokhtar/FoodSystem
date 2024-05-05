@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get('/', verifyTokenWithCookie, bookingController.bookingIndex);
 router.post('/', verifyTokenWithCookie, checkRole(userRoleEnum.Customer), bookingController.bookingPost);
+router.get('/filter', verifyTokenWithCookie, bookingController.bookinIndexByFilter);
 router.patch('/updateBookingStatus/:id', verifyTokenWithCookie, bookingController.bookingStatusUpdate);
 router.get('/:id', verifyTokenWithCookie, bookingController.bookingDetails);
 router.patch('/:id', verifyTokenWithCookie,bookingController.bookingUpdate);
