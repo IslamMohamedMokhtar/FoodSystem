@@ -16,15 +16,11 @@ const Menu = () => {
     const { loading, users } = useUserFetch(pageNumber);
 
     useEffect(() => setPageNumber(1), []);
-    useEffect(() => {
-        console.log('userPreview:', userPreview);
-    }, [userPreview]);
 
     useEffect(() => {
         console.log(users);
         if (!loading && users) {
             setUserPreview(users);
-            console.log('userPreview:', userPreview);
         }
     }, [users, loading]);
 

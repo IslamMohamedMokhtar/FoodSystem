@@ -16,7 +16,6 @@ export default function BookingCard({ booking }) {
     const { updateBookingStatus, loading } = useAddBooking();
     const [showDialog, setOpenModal] = useState(false);
     const updateStatus = async ({ bookingStatus }) => {
-        console.log("bookingStatus", bookingStatus);
         await updateBookingStatus({ bookingStatus, bookingId: bookingModel._id });
         window.location.reload();
     }

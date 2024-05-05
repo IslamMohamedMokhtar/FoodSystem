@@ -15,7 +15,7 @@ import Profile from './Profile/Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthModel from './Models/AuthModel';
 import User from './User/User';
-import AddProduct from './Product/AddProduct';
+import AddProduct from './Menu/AddProduct';
 
 // Lazy load components
 const Nav1 = lazy(() => import('./Nav/Nav1'));

@@ -5,7 +5,6 @@ import imag from '../assets/image/default-profile-pic.jpg';
 import './Dashboard.scss';
 export default function MenuCard({ userPreview }) {
     let userWithProfileModel:UserWithProfileModel = userPreview;
-    console.log('userWithProfileModel', userWithProfileModel);
     let user = userWithProfileModel.auth;
     let profile = userWithProfileModel.profile;
     let profilePic = profile.userProfilePicUrl? `${baseUrl}/${profile.userProfilePicUrl}`:imag;

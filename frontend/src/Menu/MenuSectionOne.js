@@ -33,11 +33,11 @@ export default function MenuSectionOne({ type }) {
                     {menu.map((menuItem, index) => {
                         if (menu.length === index + 1) {
                             return <div ref={lastMenuCallRef} key={menuItem._id} className="col-xl-3 col-lg-4 col-12 mb-6 px-3">
-                                <MenuCard imageUrl={`${baseUrl}/${menuItem.picUrl}`} title={menuItem.name} body={menuItem.description} price={menuItem.price} />
+                                <MenuCard _id={menuItem._id} imageUrl={`${baseUrl}/${menuItem.picUrl}`} title={menuItem.name} body={menuItem.description} price={menuItem.price} />
                             </div>;
                         } else {
                             return <div key={menuItem._id} className="col-xl-3 col-lg-4 col-12 mb-6 px-3">
-                                <MenuCard imageUrl={`${baseUrl}/${menuItem.picUrl}`} title={menuItem.name} body={menuItem.description} price={menuItem.price} />
+                                <MenuCard _id={menuItem._id} imageUrl={`${baseUrl}/${menuItem.picUrl}`} title={menuItem.name} body={menuItem.description} price={menuItem.price} />
                             </div>;
                         }
                     })}
@@ -55,6 +55,7 @@ export default function MenuSectionOne({ type }) {
                     </div>
                         ))}
                 </div>
+                
             </div>
         </>
     );
