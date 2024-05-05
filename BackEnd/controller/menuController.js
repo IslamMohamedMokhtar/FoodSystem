@@ -9,7 +9,7 @@ const menuPost = async (req, res) => {
         const menu = await Menu.create({ picUrl, name, price, description, createdBy, type });
         return res.status(200).json(responseBuilder({ result: { Menu: menu } }));
     } catch (error) {
-        return res.json(responseBuilder({ error: handleErrors(error, menuErrors) }));
+        return res.status(400).json(responseBuilder({ error: handleErrors(error, menuErrors) }));
     }
 };
 
