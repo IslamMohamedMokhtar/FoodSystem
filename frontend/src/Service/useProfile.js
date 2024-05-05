@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useState } from "react";
-import { profileUrl } from "../Common/constants";
-import { signout } from "../Redux/Auth/authActions";
+import { profileUrl } from "../Common/constants.js";
+import { signout } from "../Redux/Auth/authActions.js";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import ProfileModel from "../Models/ProfileModel";
-import HTMLResponseUtil from "../Util/HttpResposeUtil";
-import parseError from "../Util/ErrorParserUtil";
+import ProfileModel from "../Models/ProfileModel.js";
+import HTMLResponseUtil from "../Util/HttpResposeUtil.js";
+import parseError from "../Util/ErrorParserUtil.js";
 
 const successNotify = (message) => toast.success(message);
 const failedNotify = (message) => toast.warning(message);
-export  function useProfileFetch() {
+export function useProfileFetch() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [profile, setProfile] = useState([]);
@@ -40,6 +40,7 @@ export  function useProfileFetch() {
 
     return { loading, error, profile, commit };
 }
+
 export function useProfilePost() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

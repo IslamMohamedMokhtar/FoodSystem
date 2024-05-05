@@ -20,7 +20,7 @@ export const login = createAsyncThunk("auth/login",
         }
         catch (error) {
             console.log(HTMLResponseUtil({ Task: 'login', statusCode: (error.response?.status || 500) }));
-            failed(HTMLResponseUtil({ Task: 'login', statusCode: error.response?.status || 500 }));
+            failed(HTMLResponseUtil({ Task: 'login', statusCode: error.response?.status || 500 , extraMessage: `incorrect username or password`}));
             throw new Error(error);
         }
     }

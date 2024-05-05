@@ -4,12 +4,15 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { FaCalendar } from 'react-icons/fa';
 import Select from 'react-select';
-import useAddBooking from '../Service/useAddBooking';
+import useAddBooking from '../Service/useBooking';
 import Loading from '../Common/Loading';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import AuthModel from '../Models/AuthModel';
 
 
 export default function Book() {
-    const {addBooking, loading} = useAddBooking();
+    const { addBooking, loading } = useAddBooking();
     const yearOptions = [
         { value: '18:30', label: '06:30 PM' },
         { value: '06:30', label: '06:30 AM' }
@@ -26,9 +29,8 @@ export default function Book() {
         bookedDate: new Date()
     });
     const handleChange = (e, actionMeta, selectedOptions) => {
-        console.log("hena",e, actionMeta, selectedOptions);
         setFormData(prevData => {
-            if(selectedOptions){
+            if (selectedOptions) {
                 return {
                     ...prevData,
                     [actionMeta.name]: e
@@ -121,7 +123,7 @@ export default function Book() {
                                 dateFormat="MM/dd/yyyy"
                                 showPopperArrow={false}
                                 customInput={<CustomInput />}
-                             required/>
+                                required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputBookedTime" className="form-label">Time</label>
@@ -141,33 +143,33 @@ export default function Book() {
                                     })
 
                                 }}
-                                id="inputBookedTime" 
-                                name="bookedTime" 
-                                value={formData.bookedTime} 
-                                onChange={(selectedOption, actionMeta) => handleChange(selectedOption, actionMeta, "bookedTime")} 
-                                options={yearOptions}  required/>
+                                id="inputBookedTime"
+                                name="bookedTime"
+                                value={formData.bookedTime}
+                                onChange={(selectedOption, actionMeta) => handleChange(selectedOption, actionMeta, "bookedTime")}
+                                options={yearOptions} required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputCustomerName" className="form-label">Name</label>
-                            <input type="text" 
-                            className="form-control rounded-pill" 
-                            id="inputCustomerName" 
-                            placeholder="Enter your name" 
-                            name="customerName" 
-                            value={formData.customerName} 
-                            onChange={handleChange}  required/>
+                            <input type="text"
+                                className="form-control rounded-pill"
+                                id="inputCustomerName"
+                                placeholder="Enter your name"
+                                name="customerName"
+                                value={formData.customerName}
+                                onChange={handleChange} required />
                         </div>
                         <div className="col-md-6">
                             <label htmlFor="inputCustomerPhone" className="form-label">Phone</label>
-                            <input type="tel" 
-                            pattern="[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{4}"
-                            className="form-control rounded-pill" 
-                            id="inputCustomerPhone" 
-                            placeholder="x-xxx-xxx-xxxx" 
-                            name="customerPhone" 
-                            value={formData.customerPhone} 
-                            onChange={handleChange} 
-                            title="Please enter a valid mobile phone number in the format x-xxx-xxx-xxxx" required/>
+                            <input type="tel"
+                                pattern="[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{4}"
+                                className="form-control rounded-pill"
+                                id="inputCustomerPhone"
+                                placeholder="x-xxx-xxx-xxxx"
+                                name="customerPhone"
+                                value={formData.customerPhone}
+                                onChange={handleChange}
+                                title="Please enter a valid mobile phone number in the format x-xxx-xxx-xxxx" required />
                         </div>
                         <div className="col-md-12">
                             <label htmlFor="inputCity" className="form-label">City</label>
@@ -186,22 +188,30 @@ export default function Book() {
                                         display: 'none' // Hide the indicator separator
                                     })
 
-                                }} id="inputTotalPerson" 
-                                name="totalPerson" 
-                                value={formData.totalPerson} 
+                                }} id="inputTotalPerson"
+                                name="totalPerson"
+                                value={formData.totalPerson}
                                 onChange={(selectedOption, actionMeta) => handleChange(selectedOption, actionMeta, "totalPerson")}
-                                options={totalPersonOptions} required/>
+                                options={totalPersonOptions} required />
                         </div>
                         <div className="col-12">
-                            {!loading&&<button type="submit" className="btn btn-secondary w-100 rounded-pill py-3">Book A Table</button>}
-                            {loading&&<Loading/>}
+                            {!loading && <button type="submit" className="btn btn-secondary w-100 rounded-pill py-3">Book A Table</button>}
+                            {loading && <Loading />}
                         </div>
                     </form>
+
                 </div>
+                <div className="container mb-10 d-flex justify-content-end">
+                        <Link to={`/bookingList`} className="btn icon-btn add-btn d-flex justify-content-center align-items-center">
+                            <div className=""></div>
+                            <div className="btn-txt">Show Bookings</div>
+                        </Link>
+                    </div>
                 <div className="book-background-container">
+                    
                 </div>
             </div>
-            
+
         </>
     );
 }

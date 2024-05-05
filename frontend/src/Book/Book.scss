@@ -7,7 +7,8 @@
 }
 
 .react-datepicker__input-container input {
-  width: calc(100% - 30px); /* Adjust as needed to accommodate the icon */
+  width: calc(100% - 30px);
+  /* Adjust as needed to accommodate the icon */
 }
 
 .react-datepicker__input-container .react-datepicker__close-icon {
@@ -16,10 +17,26 @@
   right: 0;
   transform: translateY(-50%);
 }
+
 .book-background-container {
-    background-image: url('../assets//image//map-pic.png'); /* Replace 'background-image.jpg' with the path to your image */
-    background-size: cover;
-    background-position: center;
-    margin-top: -12%;
-    height: 767px;
+  background-image: url('../assets//image//map-pic.png');
+  /* Replace 'background-image.jpg' with the path to your image */
+  background-size: cover;
+  background-position: center;
+  margin-top: -12%;
+  height: 767px;
+}
+
+.custom-dialog-btn {
+  border-radius: 50%;
+  box-shadow: 0px 5px 5px gray;
+  &.red{
+    color: var(--bs-red);
+  }
+  &.green{
+    color: var(--bs-green);
+  }
+  &:hover{
+    background-color: rgb(242, 242, 242);
+  }
 }

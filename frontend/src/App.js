@@ -14,6 +14,8 @@ import ContactUs from './ContactUs/ContactUs';
 import Profile from './Profile/Profile';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthModel from './Models/AuthModel';
+import User from './User/User';
+import AddProduct from './Product/AddProduct';
 
 // Lazy load components
 const Nav1 = lazy(() => import('./Nav/Nav1'));
@@ -24,6 +26,7 @@ const About = lazy(() => import('./About/About'));
 const Menu = lazy(() => import('./Menu/Menu'));
 const Book = lazy(() => import('./Book/Book'));
 const Dashboard = lazy(() => import('./Dashboard/Dashboard'));
+const BookingDisplay = lazy(() => import('./Book/BookingDisplay'));
 function App() {
   return (
     <Router>
@@ -57,17 +60,29 @@ const Routings = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="*" element={<NotFound />} />
-      <Route path="menu" element={<ProtectedRoute auth={isLoggedIn}>
+      <Route path="/menu" element={<ProtectedRoute auth={isLoggedIn}>
         <Menu />
       </ProtectedRoute>} />
-      <Route path="booking" element={<ProtectedRoute auth={isLoggedIn}>
+      <Route path="/booking" element={<ProtectedRoute auth={isLoggedIn}>
         <Book />
       </ProtectedRoute>} />
-      <Route path="profile" element={<ProtectedRoute auth={isLoggedIn}>
+      <Route path="/profile" element={<ProtectedRoute auth={isLoggedIn}>
         <Profile />
       </ProtectedRoute>} />
-      <Route path="dashboard" element={<ProtectedRoute auth={isLoggedIn&& auth && auth.userRole === userRoleEnum.Admin}>
+      <Route path="/dashboard" element={<ProtectedRoute auth={isLoggedIn&& auth && auth.userRole === userRoleEnum.Admin}>
         <Dashboard />
+      </ProtectedRoute>} />
+      <Route path="/dashboard/users" element={<ProtectedRoute auth={isLoggedIn&& auth && auth.userRole === userRoleEnum.Admin}>
+        <User />
+      </ProtectedRoute>} />
+      <Route path="/add-product" element={<ProtectedRoute auth={isLoggedIn&& auth && auth.userRole === userRoleEnum.Admin}>
+        <AddProduct />
+      </ProtectedRoute>} />
+      <Route path="/booking/:userID" element={<ProtectedRoute auth={isLoggedIn}>
+        <BookingDisplay />
+      </ProtectedRoute>} />
+      <Route path="/bookingList" element={<ProtectedRoute auth={isLoggedIn}>
+        <BookingDisplay />
       </ProtectedRoute>} />
 
     </Routes>

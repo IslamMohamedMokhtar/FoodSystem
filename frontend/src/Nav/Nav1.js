@@ -3,7 +3,7 @@ import './Nav.scss';
 import Token from '../Token/Token';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../Redux/Auth/authActions';
+import { signout } from '../Redux/Auth/authActions.js';
 function Nav1() {
     const [show, setShow] = useState(false);
 
@@ -60,12 +60,12 @@ function Nav1() {
                             {isLoggedIn && <>
                                 <li>
                                     <a type='button' className='signout' onClick={() => dispatch(signout())}>
-                                        <i class="fas fa-times icon"></i>
+                                        <i className="fas fa-times icon"></i>
                                     </a>
                                 </li>
                                 <li>
                                     <NavLink type='button' className='profile' to='profile'>
-                                        <i class="fa fa-user icon"></i>
+                                        <i className="fa fa-user icon"></i>
                                     </NavLink>
                                 </li>
                             </>}

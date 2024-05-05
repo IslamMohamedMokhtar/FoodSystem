@@ -8,11 +8,16 @@ export const bookingsUrl = `${baseUrl}/bookings`;
 export const profileUrl = `${baseUrl}/profile`;
 export const pictureUrl = `${baseUrl}/picture`;
 export const userUrl = `${baseUrl}/user`;
-
+export const minPaginationSize = 20;
 export const userRoleEnum = {
     Admin: "admin",
     Customer: "customer"
     };
+export const bookingStatusEnum = {
+    Pending: "pending",
+    Rejected: "rejected",
+    Accepted: "accepted"
+}
 export const menuTypeEnum = {
     Breakfast: "breakfast",
     MainDish: "mainDish",

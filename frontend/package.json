@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -34,7 +33,7 @@
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "redux": "^5.0.1",
-    "sass": "^1.74.1",
+    "sass": "^1.76.0",
     "typescript": "^5.4.5",
     "web-vitals": "^2.1.4"
   },

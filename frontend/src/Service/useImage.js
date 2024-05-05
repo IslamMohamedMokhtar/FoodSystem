@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { pictureUrl } from "../Common/constants";
-import { signout } from "../Redux/Auth/authActions";
+import { signout } from "../Redux/Auth/authActions.js";
 import { useDispatch } from "react-redux";
 import PictureModel from "../Models/PictureModel";
 import HTMLResponseUtil from "../Util/HttpResposeUtil";

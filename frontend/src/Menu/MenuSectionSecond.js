@@ -13,13 +13,13 @@ export default function MenuSectionSecond() {
     return (
         <div className='bg-primary'>
             <div className='container py-120'>
-                <div className='d-flex gap-5 justify-content-between'>
+                <div className='d-flex flex-wrap gap-5 justify-content-between'>
                     <div className='col-lg-4 col-12'>
                         <h5 className='fs-55 fw-bolder font-Playfair mb-5'>You can order through apps</h5>
                         <p className='fs-7 me-64'>Lorem ipsum dolor sit amet consectetur adipiscing elit enim bibendum sed et aliquet aliquet risus tempor semper.</p>
                     </div>
                     <div className='col-lg-7 col-12'>
-                        <div className='d-flex px-9  container gap-3 mb-9'>
+                        <div className='d-flex px-9 flex-wrap container gap-3 mb-9'>
                             <a className='btn btn-white border border-primary rounded-4 col shadow delivery-btn' href='https://www.ubereats.com/'>
                                 <img src={uberEats} alt="uber Eats" className='py-4' />
                             </a>
@@ -30,7 +30,7 @@ export default function MenuSectionSecond() {
                                 <img src={postMates} alt="Postmates" className='py-4' />
                             </a>
                         </div>
-                        <div className='d-flex gap-3  mb-9'>
+                        <div className='d-flex gap-3 flex-wrap mb-9'>
                             <a className='btn btn-white border border-primary rounded-4 col shadow d-flex align-items-center delivery-btn' href='https://www.doordash.com/'>
                                 <img src={doorDash} alt="DOORDASH" className='py-2 mx-auto' />
                             </a>
@@ -41,7 +41,7 @@ export default function MenuSectionSecond() {
                                 <img src={deliveroo} alt="deliveroo" className='py-2 mx-auto' />
                             </a>
                         </div>
-                        <div className='d-flex px-9  container gap-3'>
+                        <div className='d-flex px-9 flex-wrap container gap-3'>
                             <a className='btn btn-white border border-primary rounded-4 col shadow delivery-btn' href='https://www.instacart.com/'>
                                 <img src={instaCart} alt="instacart" className='py-4' />
                             </a>

@@ -6,7 +6,7 @@ import Icon from 'react-icons-kit';
 import Loading from '../Common/Loading';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useDispatch, useSelector } from 'react-redux';
-import {signup} from '../Redux/Auth/authActions';
+import {signup} from '../Redux/Auth/authActions.js';
 
 function Signup({ setIsSignup, setOpenModal }) {
     const [email, setEmail] = useState("");

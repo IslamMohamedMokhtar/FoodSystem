@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { menuUrl } from "../Common/constants";
-import { signout } from "../Redux/Auth/authActions";
+import { menuUrl } from "../Common/constants.js";
+import { signout } from "../Redux/Auth/authActions.js";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import HTMLResponseUtil from "../Util/HttpResposeUtil";
-import parseError from "../Util/ErrorParserUtil";
+import HTMLResponseUtil from "../Util/HttpResposeUtil.js";
+import parseError from "../Util/ErrorParserUtil.js";
 
 export default function useMenuFetch(type, pageNumber) {
     const [loading, setLoading] = useState(false);

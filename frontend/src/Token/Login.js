@@ -5,7 +5,7 @@ import { eye } from 'react-icons-kit/feather/eye';
 import Icon from 'react-icons-kit';
 import Loading from '../Common/Loading';
 import ReCAPTCHA from 'react-google-recaptcha';
-import {login} from '../Redux/Auth/authActions';
+import {login} from '../Redux/Auth/authActions.js';
 import { useDispatch, useSelector } from 'react-redux';
 function Login({ setIsSignup, setOpenModal }) {
     const [password, setPassword] = useState("");

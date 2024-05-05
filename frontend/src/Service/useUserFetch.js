@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { signout } from "../Redux/Auth/authActions";
+import { signout } from "../Redux/Auth/authActions.js";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import HTMLResponseUtil from "../Util/HttpResposeUtil";
 import parseError from "../Util/ErrorParserUtil";
-import { userUrl } from "../Common/constants";
+import { minPaginationSize, userUrl } from "../Common/constants";
 import UserResponse from "../Models/UserModel";
 
 export default function useUserFetch(pageNumber) {
@@ -24,7 +24,7 @@ export default function useUserFetch(pageNumber) {
         setLoading(true);
         setError(null);
         let cancel;
-        const filterData = { pageNumber, pageSize: 20 };
+        const filterData = { pageNumber, pageSize: minPaginationSize };
     
         axios.get(userUrl + "/filter", {
             params: filterData,

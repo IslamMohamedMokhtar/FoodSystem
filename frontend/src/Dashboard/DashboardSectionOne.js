@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import './Dashboard.scss';
 import useUserFetch from '../Service/useUserFetch';
 import { UserWithProfileModel } from '../Models/UserModel';
-import Loading from "../Common/Loading";
 import UserCard from './UserCard';
 import { Link } from 'react-router-dom';
 import LoadingCard from '../Common/LoadingCard';
@@ -68,7 +67,7 @@ const Menu = () => {
     };
 
     return (
-        <div className='bg-primary'>
+        <div className='bg-primary py-2'>
             <div className='container'>
                 <div
                     className="scrollView"
@@ -91,23 +90,23 @@ const Menu = () => {
                             <div className="card-center user-card item text-center rounded-5 py-5 border-dark">
                                 <div className="px-8 mb-7">
                                     <div className='mb-4 '> 
-                                    <Link to='/User' className='btn '>
+                                    <Link to='/dashboard/users' className='btn '>
                                         <h3 className="card-title text-secondary fw-bold font-Playfair fs-3 d-flex align-items-center">view more
-                                        <i class="fa fa-arrow-right ps-2"></i>
+                                        <i className="fa fa-arrow-right ps-2"></i>
                                     </h3></Link></div>
                                 </div>
                             </div>
                         </>
                     )}
                     {loading && Array.from({ length: 20 }).map((_, index) => (
-                        <div key={index} className="card is-loading item rounded-5 border-secondary minh-500">
+                        <div className="card is-loading item rounded-5 border-secondary minh-500">
                             <LoadingCard>
-                            <div class="image"></div>
-                                <h3></h3>
-                                <h4></h4>
-                                <h2></h2>
-                                <h2></h2>
-                                <h2></h2>
+                                <div className="image rounded-circle"></div>
+                                <h3> </h3>
+                                <h4> </h4>
+                                <h2> </h2>
+                                <h2> </h2>
+                                <h2> </h2>
                             </LoadingCard>
                         </div>
                     ))}

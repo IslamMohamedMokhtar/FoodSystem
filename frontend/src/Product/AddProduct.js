@@ -1,38 +1,30 @@
 import { useEffect, useState } from 'react';
-import './Profile.scss';
 import 'react-datepicker/dist/react-datepicker.css';
-import imag from '../assets/image/default-profile-pic.jpg';
+import imag from '../assets/image/default-profile-pic.jpg'
 import { useProfileFetch, useProfilePost } from '../Service/useProfile';
 import { useProfilePicPost } from '../Service/useImage';
-import { baseUrl } from '../Common/constants';
+import { baseUrl, menuTypeEnum } from '../Common/constants';
 import Loading from '../Common/Loading';
 import PictureModel from '../Models/PictureModel';
 import ProfileModel from '../Models/ProfileModel';
+import Select from 'react-select';
 
-export default function Profile() {
+export default function AddProduct() {
     const [imagePreview, setImagePreview] = useState(imag);
-    const { commit: profileFetchComit } = useProfileFetch();
     const { loading: profilePostLoading, commit } = useProfilePost();
     const { loading: imageLoading, commit: commitProfilePic } = useProfilePicPost();
     const [imageSrc, setImageSrc] = useState(null);
+    const productType = [
+        { value: menuTypeEnum.Breakfast, label: "Breakfast" },
+        { value: menuTypeEnum.Desserts, label: "Desserts" },
+        { value: menuTypeEnum.Drinks, label: "Drinks" },
+        { value: menuTypeEnum.MainDish, label: "Main Dish" }
+    ];
     const [formData, setFormData] = useState({
-        userName: '',
+        name: '',
+        type: productType[0],
         userProfilePicUrl: null
     });
-    useEffect(() => {
-        const func = async () => {
-            const profileModel: ProfileModel = await profileFetchComit();
-            if (profileModel.error === null) {
-                setFormData(prevData => ({
-                    ...prevData,
-                    'userName': profileModel.profile.userName
-                }));
-                if (profileModel.profile.userProfilePicUrl !== null)
-                    setImagePreview(`${baseUrl}/${profileModel.profile.userProfilePicUrl}`);
-            }
-        }
-        func();
-    }, []);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -78,10 +70,10 @@ export default function Profile() {
             if (!profilePictureUrl.error) {
                 console.log('profilePictureUrl: ' + profilePictureUrl.picUrl);
                 const newFormData = {
-                    userName: '',
+                    name: '',
                     userProfilePicUrl: null
                 };
-                newFormData.userName = formData.userName;
+                newFormData.name = formData.name;
                 newFormData.userProfilePicUrl = profilePictureUrl.picUrl;
                 if (profilePictureUrl.picUrl !== '')
                     await commit(newFormData);
@@ -89,9 +81,9 @@ export default function Profile() {
         }
         else {
             const newFormData = {
-                userName: ''
+                name: ''
             };
-            newFormData.userName = formData.userName;
+            newFormData.name = formData.name;
             await commit(newFormData);
         }
     };
@@ -100,7 +92,7 @@ export default function Profile() {
             <div className="bg-primary">
                 <div className="d-flex justify-content-center">
                     <div className="col-lg-5 text-center px-lg-5 mb-80 mt-80">
-                        <h1 className='fs-100 font-Playfair'>Edit Profile</h1>
+                        <h1 className='fs-100 font-Playfair'>Add Product</h1>
                     </div>
                 </div>
                 <div className="d-flex flex-wrap justify-content-center">
@@ -126,14 +118,38 @@ export default function Profile() {
                             </div>
                         </div>
                         <div className="col-md-6">
-                            <label htmlFor="inputUserName" className="form-label">userName</label>
+                            <label htmlFor="inputname" className="form-label">name</label>
                             <input type="string"
                                 className="form-control rounded-pill"
-                                id="inputUserName"
-                                placeholder="Enter userName"
-                                name="userName"
-                                value={formData.userName}
+                                id="inputname"
+                                placeholder="Enter name"
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange} required />
+                        </div>
+                        <div className="col-md-6">
+                            <label htmlFor="inputType" className="form-label">Time</label>
+                            <Select
+                                styles={{
+                                    control: (provided) => ({
+                                        ...provided,
+                                        borderRadius: '20px'
+                                    }),
+                                    singleValue: (provided) => ({
+                                        ...provided,
+                                        borderRadius: '20px'
+                                    }),
+                                    indicatorSeparator: (provided) => ({
+                                        ...provided,
+                                        display: 'none' // Hide the indicator separator
+                                    })
+
+                                }}
+                                id="inputType" 
+                                name="type" 
+                                value={formData.type} 
+                                onChange={(selectedOption, actionMeta) => handleChange(selectedOption, actionMeta, "type")} 
+                                options={productType}  required/>
                         </div>
                         <div className="col-12">
                             {!profilePostLoading && !imageLoading && (<button type="submit" className="btn btn-secondary w-100 rounded-pill py-3">Save</button>)}
@@ -144,7 +160,6 @@ export default function Profile() {
                 <div className="contact-us-background-container bg-white">
                 </div>
             </div>
-
         </>
     );
 }

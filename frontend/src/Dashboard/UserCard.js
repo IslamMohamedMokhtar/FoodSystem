@@ -1,15 +1,17 @@
+import { Link } from 'react-router-dom';
 import { baseUrl } from '../Common/constants';
 import { UserWithProfileModel } from '../Models/UserModel';
 import imag from '../assets/image/default-profile-pic.jpg';
 import './Dashboard.scss';
 export default function MenuCard({ userPreview }) {
-    let userWithProfileModel = userPreview;
+    let userWithProfileModel:UserWithProfileModel = userPreview;
     console.log('userWithProfileModel', userWithProfileModel);
     let user = userWithProfileModel.auth;
     let profile = userWithProfileModel.profile;
     let profilePic = profile.userProfilePicUrl? `${baseUrl}/${profile.userProfilePicUrl}`:imag;
     return (
         <>
+        <Link to={`/booking/${user._id}`} className='text-decoration-none'>
             <div className="card user-card text-center rounded-5 py-5 border-secondary d-flex align-items-center minh-500" key={user._id}>
             <img src={profilePic} className='rounded-circle profilePic' alt="Profile Picture" />
                 <div className="px-8 mt-5 mb-7">
@@ -21,7 +23,7 @@ export default function MenuCard({ userPreview }) {
                     {user.updatedAt && <div className="card-text text-dark fs-7">updatedAt: {user.updatedAt}</div>}
                 </div>
             </div>
-
+            </Link>
         </>
     );
 }

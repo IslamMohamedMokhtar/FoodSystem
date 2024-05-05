@@ -17,7 +17,7 @@ export default function Menu() {
         <>
             <div className="d-flex flex-wrap flex-column justify-content-center align-items-center w-100">
                 <div className="container-fluid px-lg-410">
-                    <div className="d-flex justify-content-center mx-130 px-2">
+                    <div className="d-flex justify-content-center mx-lg-130 m-x0 px-2">
                         <div className="font-Playfair text-center">
                             <h1 className="fs-100">Our Menu</h1>
                             <p>We consider all the drivers of change gives you the components you need to change to create a truly happens.</p>

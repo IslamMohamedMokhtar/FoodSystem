@@ -8,7 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Token from '../Token/Token';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signout } from '../Redux/Auth/authActions';
+import { signout } from '../Redux/Auth/authActions.js';
 
 function Footer() {
     const [show, setShow] = useState(false);

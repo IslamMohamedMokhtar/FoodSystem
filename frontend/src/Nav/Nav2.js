@@ -6,13 +6,13 @@ import AuthModel from '../Models/AuthModel';
 import { userRoleEnum } from '../Common/constants';
 
 function Nav2() {
-    const { isLoggedIn, user } = useSelector((state) => state.auth);
+    const { user } = useSelector((state) => state.auth);
     const authUser: AuthModel = user;
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-primary mh-100" aria-label="Main navigation">
+        <nav className="navbar navbar-expand-xl navbar-light bg-primary " aria-label="Main navigation">
             <div className="container">
-                <div className="d-flex flex-wrap w-100 pe-64">
-                    <button className="navbar-toggler me-10" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div className="d-flex flex-wrap w-100 col-6">
+                    <button className="navbar-toggler me-xl-0 me-10" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="col-5">
@@ -22,8 +22,8 @@ function Nav2() {
                         </NavLink>
                     </div>
 
-                    <div className="col-6 collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div className="col-lg-7 collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 mt-lg-0 mt-4">
                             <li className="nav-item">
                                 <NavLink exact={true} to="/" className="nav-link px-4 py-1" activeClassName="active">Home</NavLink>
                             </li>
@@ -39,7 +39,7 @@ function Nav2() {
                             <li className="nav-item">
                                 <NavLink to="/contactus" className="nav-link px-4 py-1" activeClassName="active">Contact</NavLink>
                             </li>
-                            {authUser&&
+                            {authUser &&
                                 authUser.userRole === userRoleEnum.Admin && <>
                                     <li className="nav-item">
                                         <NavLink to="/dashboard" className="nav-link px-4 py-1" activeClassName="active">Dashboard</NavLink>
