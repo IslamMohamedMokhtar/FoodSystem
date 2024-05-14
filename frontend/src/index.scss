@@ -5,13 +5,13 @@
 
 // Define custom variables
 @import './assets/styles/color';
+
 @import './assets/styles/border';
 @import './assets/styles/font';
 @import './assets/styles/input';
 @import './assets/styles/padding';
 
 @import "bootstrap/scss/bootstrap";
-
 @font-face {
   font-family: 'DM Sans';
   src: url('./assets/fonts/static/DMSans-Regular.ttf') format('truetype');
@@ -53,7 +53,6 @@
   font-weight: bold; /* Bold weight */
   font-style: italic; /* Italic style */
 }
-
 body {
   margin: 0;
   font-family: 'DM Sans', sans-serif;

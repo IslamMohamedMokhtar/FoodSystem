@@ -16,7 +16,6 @@ export default function MenuCard({ _id, imageUrl, title, body, price }) {
         await deleteMenu({ menuId: _id });
         window.location.reload();
     }
-    console.log("_id", _id);
     return (
         <>
             <div className="card text-center rounded-5">

@@ -13,7 +13,6 @@ export default function useMenuFetch(type, pageNumber) {
     const [menu, setMenu] = useState([]);
     const [hasMore, setHasMore] = useState(false);
     const dispatch = useDispatch();
-    // const successNotify = (message) => toast.success(message);
     const failedNotify = (message) => toast.warning(message);
     useEffect(() => {
         setMenu([]); // Reset menu when type changes
@@ -38,9 +37,11 @@ export default function useMenuFetch(type, pageNumber) {
         .catch(error => {
             if (axios.isCancel(error)) return;
             setError(true);
+            setHasMore(false);
             if (error.response && error.response.status === 401) {
                 dispatch(signout());
             }
+            setMenu([]);
             failedNotify(HTMLResponseUtil({ Task: 'Menu', statusCode: (error.response?.status || 500) , extraMessage: parseError(error.response.data.error)}));
         })
         .finally(() => setLoading(false)); // Update loading state to false

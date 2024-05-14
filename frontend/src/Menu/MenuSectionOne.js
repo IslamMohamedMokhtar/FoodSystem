@@ -30,7 +30,7 @@ export default function MenuSectionOne({ type }) {
         <>
             <div className="container mt-90 mb-133 scroll-Y">
                 <div className="d-flex flex-wrap">
-                    {menu.map((menuItem, index) => {
+                    {menu && menu.map((menuItem, index) => {
                         if (menu.length === index + 1) {
                             return <div ref={lastMenuCallRef} key={menuItem._id} className="col-xl-3 col-lg-4 col-12 mb-6 px-3">
                                 <MenuCard _id={menuItem._id} imageUrl={`${baseUrl}/${menuItem.picUrl}`} title={menuItem.name} body={menuItem.description} price={menuItem.price} />
